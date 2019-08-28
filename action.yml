@@ -1,0 +1,44 @@
+name: "dotnet-sonarscanner"
+description: "Run analysis for dotnet core via dotnet-sonarscanner"
+author: "Joshua Duffy <mail@joshuaduffy.org>"
+
+inputs:
+  buildCommand:
+    description: "Command to invoke build"
+    required: true
+  testCommand:
+    description: "Command to invoke tests"
+    required: false
+  projectKey:
+    description: "Specifies the key of the analyzed project in SonarQube"
+    required: true
+  projectName:
+    description: "Specifies the name of the analyzed project in SonarQube"
+    required: true
+  sonarHostname:
+    description: "The server URL"
+    default: "https://sonarcloud.io"
+    required: false
+  sonarOrganisation:
+    description: "Organisation"
+    required: true
+  verbose:
+    default: "false"
+    description: "Enable verbose logging"
+    required: false
+
+runs:
+  using: "docker"
+  image: "Dockerfile"
+  args:
+    - ${{ inputs.buildCommand }}
+    - ${{ inputs.testCommand }}
+    - ${{ inputs.projectKey }}
+    - ${{ inputs.projectName }}
+    - ${{ inputs.sonarHostname }}
+    - ${{ inputs.sonarOrganisation }}
+    - ${{ inputs.verbose }}
+
+branding:
+  icon: 'check'
+  color: 'purple'
