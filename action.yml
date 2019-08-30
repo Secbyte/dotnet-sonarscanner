@@ -41,6 +41,7 @@ runs:
     - ${{ inputs.sonarHostname }}
     - ${{ inputs.sonarOrganisation }}
     - ${{ inputs.verbose }}
+    - ${{ inputs.openCoverPaths }}
 
 branding:
   icon: 'check'
