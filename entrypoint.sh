@@ -7,6 +7,7 @@
 # sonarHostname = $5
 # sonarOrganisation = $6
 # verbose = $7
+# openCoverPaths = $8
 
 set -eu
 
@@ -31,6 +32,16 @@ fi
 if [ -n "$6" ]
 then
     begin_cmd="$begin_cmd /o:\"$6\""
+fi
+
+if [ -n "$7" ]
+then
+    begin_cmd="$begin_cmd /d:sonar.verbose=\"$7\""
+fi
+
+if [ -n "$8" ]
+then
+    begin_cmd="$begin_cmd /d:sonar.cs.opencover.reportsPaths=\"$8\""
 fi
 
 if [ -n "${SONAR_TOKEN}" ]

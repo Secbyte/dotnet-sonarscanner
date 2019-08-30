@@ -26,6 +26,9 @@ inputs:
     default: "false"
     description: "Enable verbose logging"
     required: false
+  openCoverPaths:
+    description: "Path(s) to coverage file(s)"
+    required: false
 
 runs:
   using: "docker"
