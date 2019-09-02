@@ -8,6 +8,7 @@
 # sonarOrganisation = $6
 # verbose = $7
 # openCoverPaths = $8
+# coverageExclusions = $9
 
 set -eu
 
@@ -42,6 +43,11 @@ fi
 if [ -n "$8" ]
 then
     begin_cmd="$begin_cmd /d:sonar.cs.opencover.reportsPaths=\"$8\""
+fi
+
+if [ -n "$9" ]
+then
+    begin_cmd="$begin_cmd /d:sonar.coverage.exclusions=\"$9\""
 fi
 
 if [ -n "${SONAR_TOKEN}" ]

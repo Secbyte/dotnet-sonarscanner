@@ -8,7 +8,7 @@ _Currently does not support username/password authentication and presumes you ar
 
 ```yaml
 - name: Sonarscanner for dotnet
-  uses: Secbyte/dotnet-sonarscanner@v1.0
+  uses: Secbyte/dotnet-sonarscanner@v1.1
   with:
     buildCommand: dotnet build .
     testCommand: dotnet test .
@@ -17,6 +17,7 @@ _Currently does not support username/password authentication and presumes you ar
     sonarOrganisation: an-org
     verbose: "true"
     openCoverPaths: "tests/coverage.opencover.xml"
+    coverageExclusions: "**test*.cs"
   env:
     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -50,6 +51,9 @@ verbose:
   required: false
 openCoverPaths:
   description: "Path(s) to coverage file(s)"
+  required: false
+coverageExclusions:
+  description: "Glob(s) for files to exclude from coverage"
   required: false
 ```
 

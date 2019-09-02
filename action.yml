@@ -29,6 +29,9 @@ inputs:
   openCoverPaths:
     description: "Path(s) to coverage file(s)"
     required: false
+  coverageExclusions:
+    description: "Glob(s) for files to exclude from coverage"
+    required: false
 
 runs:
   using: "docker"
@@ -42,6 +45,7 @@ runs:
     - ${{ inputs.sonarOrganisation }}
     - ${{ inputs.verbose }}
     - ${{ inputs.openCoverPaths }}
+    - ${{ inputs.coverageExclusions }}
 
 branding:
   icon: 'check'
