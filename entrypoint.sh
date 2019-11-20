@@ -6,9 +6,8 @@
 # projectName = $4
 # sonarHostname = $5
 # sonarOrganisation = $6
-# verbose = $7
-# openCoverPaths = $8
-# coverageExclusions = $9
+# beginArguments = $7
+# endArguments = $8
 
 set -eu
 
@@ -37,12 +36,12 @@ fi
 
 if [ -n "$7" ]
 then
-    begin_cmd="$begin_cmd /d:sonar.verbose=\"$7\""
+    begin_cmd="$begin_cmd $7"
 fi
 
 if [ -n "$8" ]
 then
-    begin_cmd="$begin_cmd /d:sonar.cs.opencover.reportsPaths=\"$8\""
+   end_cmd="$end_cmd $8"
 fi
 
 if [ -n "$9" ]

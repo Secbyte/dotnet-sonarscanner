@@ -15,9 +15,7 @@ _Currently does not support username/password authentication and presumes you ar
     projectKey: a-project-key
     projectName: a-project-name
     sonarOrganisation: an-org
-    verbose: "true"
-    openCoverPaths: "tests/coverage.opencover.xml"
-    coverageExclusions: "**test*.cs"
+    beginArguments: /d:sonar.verbose="true" /d:sonar.cs.opencover.reportsPaths="/path/to/coverage.xml" /d:sonar.coverage.exclusions="**/*.cs"
   env:
     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -45,15 +43,11 @@ sonarHostname:
 sonarOrganisation:
   description: "Organisation"
   required: true
-verbose:
-  default: "false"
-  description: "Enable verbose logging"
+beginArguments:
+  description: "Arguments to append to the begin command"
   required: false
-openCoverPaths:
-  description: "Path(s) to coverage file(s)"
-  required: false
-coverageExclusions:
-  description: "Glob(s) for files to exclude from coverage"
+endArguments:
+  description: "Arguments to append to the end command"
   required: false
 ```
 

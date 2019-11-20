@@ -22,15 +22,11 @@ inputs:
   sonarOrganisation:
     description: "Organisation"
     required: true
-  verbose:
-    default: "false"
-    description: "Enable verbose logging"
+  beginArguments:
+    description: "Arguments to append to the begin command"
     required: false
-  openCoverPaths:
-    description: "Path(s) to coverage file(s)"
-    required: false
-  coverageExclusions:
-    description: "Glob(s) for files to exclude from coverage"
+  endArguments:
+    description: "Arguments to append to the end command"
     required: false
 
 runs:
@@ -43,9 +39,8 @@ runs:
     - ${{ inputs.projectName }}
     - ${{ inputs.sonarHostname }}
     - ${{ inputs.sonarOrganisation }}
-    - ${{ inputs.verbose }}
-    - ${{ inputs.openCoverPaths }}
-    - ${{ inputs.coverageExclusions }}
+    - ${{ inputs.beginArguments }}
+    - ${{ inputs.endArguments }}
 
 branding:
   icon: 'check'
