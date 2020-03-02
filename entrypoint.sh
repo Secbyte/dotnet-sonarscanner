@@ -1,4 +1,4 @@
-#!/bin/sh -l
+#!/bin/bash -l
 
 # buildCommand = $1
 # testCommand = $2
@@ -11,27 +11,19 @@
 
 set -eu
 
-begin_cmd="/dotnet-sonarscanner begin"
-end_cmd="/dotnet-sonarscanner end"
+begin_cmd="/dotnet-sonarscanner begin \\
+    /k:\"${3//[$'\t\r\n']:?Please set the projectKey.}\" \\
+    /n:\"${4//[$'\t\r\n']:?Please set the projectName.}\" \\
+    /o:\"${6//[$'\t\r\n']:?Please set the sonarOrganisation.}\" \\
+    /d:sonar.login=\"${SONAR_TOKEN:?Please set the SONAR_TOKEN environment variable.}\""
 
-if [ -n "$3" ]
-then
-    begin_cmd="$begin_cmd /k:\"$3\""
-fi
 
-if [ -n "$4" ]
-then
-    begin_cmd="$begin_cmd /n:\"$4\""
-fi
+end_cmd="/dotnet-sonarscanner end \\
+     /d:sonar.login=\"${SONAR_TOKEN:?Please set the SONAR_TOKEN environment variable.}\""
 
 if [ -n "$5" ]
 then
-    begin_cmd="$begin_cmd /d:sonar.host.url=\"$5\""
-fi
-
-if [ -n "$6" ]
-then
-    begin_cmd="$begin_cmd /o:\"$6\""
+    begin_cmd="$begin_cmd /d:sonar.host.url=\"${5//[$'\t\r\n']}\""
 fi
 
 if [ -n "$7" ]
@@ -44,27 +36,13 @@ then
    end_cmd="$end_cmd $8"
 fi
 
-if [ -n "$9" ]
-then
-    begin_cmd="$begin_cmd /d:sonar.coverage.exclusions=\"$9\""
-fi
-
-if [ -n "${SONAR_TOKEN}" ]
-then
-    begin_cmd="$begin_cmd /d:sonar.login=\"${SONAR_TOKEN}\""
-    end_cmd="$end_cmd /d:sonar.login=\"${SONAR_TOKEN}\""
-fi
-
 sh -c "$begin_cmd"
 
-if [ -n "$1" ]
-then
-    sh -c "$1"
-fi
+sh -c "${1//[$'\t\r\n']:?Please set the buildCommand.}"
 
 if [ -n "$2" ]
 then
-    sh -c "$2"
+    sh -c "${2//[$'\t\r\n']}"
 fi
 
 sh -c "$end_cmd"

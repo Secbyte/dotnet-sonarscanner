@@ -8,14 +8,17 @@ _Currently does not support username/password authentication and presumes you ar
 
 ```yaml
 - name: Sonarscanner for dotnet
-  uses: Secbyte/dotnet-sonarscanner@v2.1
+  uses: Secbyte/dotnet-sonarscanner@v2.2
   with:
     buildCommand: dotnet build .
     testCommand: dotnet test .
     projectKey: a-project-key
     projectName: a-project-name
     sonarOrganisation: an-org
-    beginArguments: /d:sonar.verbose="true" /d:sonar.cs.opencover.reportsPaths="/path/to/coverage.xml" /d:sonar.coverage.exclusions="**/*.cs"
+    beginArguments: |
+        /d:sonar.verbose="true"
+        /d:sonar.cs.opencover.reportsPaths="/path/to/coverage.xml"
+        /d:sonar.coverage.exclusions="**/*.cs"
   env:
     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
