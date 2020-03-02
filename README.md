@@ -15,10 +15,10 @@ _Currently does not support username/password authentication and presumes you ar
     projectKey: a-project-key
     projectName: a-project-name
     sonarOrganisation: an-org
-    beginArguments: |
+    beginArguments: >
         /d:sonar.verbose="true"
-        /d:sonar.cs.opencover.reportsPaths="/path/to/coverage.xml"
-        /d:sonar.coverage.exclusions="**/*.cs"
+        /d:sonar.cs.opencover.reportsPaths='"/path/to/coverage.xml","/path/to/coverage.2.xml"'
+        /d:sonar.coverage.exclusions='"**/*.cs","**/*.md"'
   env:
     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
