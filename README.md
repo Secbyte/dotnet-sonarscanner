@@ -14,7 +14,7 @@ _Currently does not support username/password authentication and presumes you ar
     testCommand: dotnet test .
     projectKey: a-project-key
     projectName: a-project-name
-    sonarOrganisation: an-org
+    sonarOrganization: an-org
     beginArguments: >
         /d:sonar.verbose="true"
         /d:sonar.cs.opencover.reportsPaths='"/path/to/coverage.xml","/path/to/coverage.2.xml"'
@@ -43,8 +43,8 @@ sonarHostname:
   description: "The server URL"
   default: "https://sonarcloud.io"
   required: false
-sonarOrganisation:
-  description: "Organisation"
+sonarOrganization:
+  description: "Organization"
   required: true
 beginArguments:
   description: "Arguments to append to the begin command"

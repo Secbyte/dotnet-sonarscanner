@@ -19,8 +19,8 @@ inputs:
     description: "The server URL"
     default: "https://sonarcloud.io"
     required: false
-  sonarOrganisation:
-    description: "Organisation"
+  sonarOrganization:
+    description: "Organization"
     required: true
   beginArguments:
     description: "Arguments to append to the begin command"
@@ -38,10 +38,10 @@ runs:
     - ${{ inputs.projectKey }}
     - ${{ inputs.projectName }}
     - ${{ inputs.sonarHostname }}
-    - ${{ inputs.sonarOrganisation }}
+    - ${{ inputs.sonarOrganization }}
     - ${{ inputs.beginArguments }}
     - ${{ inputs.endArguments }}
 
 branding:
-  icon: 'check'
-  color: 'purple'
+  icon: "check"
+  color: "purple"
