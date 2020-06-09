@@ -8,7 +8,7 @@ _Currently does not support username/password authentication and presumes you ar
 
 ```yaml
 - name: Sonarscanner for dotnet
-  uses: Secbyte/dotnet-sonarscanner@v2.2
+  uses: Secbyte/dotnet-sonarscanner@v2.3
   with:
     buildCommand: dotnet build .
     testCommand: dotnet test .
