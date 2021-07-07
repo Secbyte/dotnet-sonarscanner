@@ -1,6 +1,5 @@
-name: "dotnet-sonarscanner"
-description: "Run analysis for dotnet core via dotnet-sonarscanner"
-author: "Joshua Duffy <mail@joshuaduffy.org>"
+name: ".NET SonarScanner Github Actions wrapper"
+description: "Run analysis for dotnet via dotnet-sonarscanner. Based on Secbyte/dotnet-sonarscanner"
 
 inputs:
   buildCommand:
