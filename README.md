@@ -58,3 +58,9 @@ endArguments:
 
 * `SONAR_TOKEN` - Token from SonarCloud with ExecuteAnalysis permissions
 * `GITHUB_TOKEN` - GitHub Token
+
+## Release new version
+
+1. Specify new version number in image parameter in [`action.yml`](https://github.com/dodopizza/dotnet-sonarscanner/blob/master/action.yml);
+2. Create and publish new release with the same version number;
+3. `default.yml` workflow starts and publishes new `GitHub Package` with specified version.
